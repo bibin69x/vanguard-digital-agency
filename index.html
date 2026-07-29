@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanguard Media — Performance Digital Growth Agency</title>
+  <meta name="description" content="SaaS-inspired, performance-driven digital marketing agency with 3+ years of verifiable ROI growth across Real Estate, Healthcare, Tourism, CAs, and EdTech." />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <!-- Toast notification container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Header / Navigation -->
+  <header id="site-header" class="site-header">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>
+        VANGUARD<span class="text-gradient-blue">MEDIA</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#industries" class="nav-link">Domains</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#roi-calculator" class="nav-link">Growth Calculator</a></li>
+          <li><a href="#testimonials" class="nav-link">Proof & Reviews</a></li>
+          <li><button id="nav-cta-btn" class="btn btn-primary">Book Strategy Call</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-content">
+        <div>
+          <div class="badge">
+            <span class="live-pulse"></span> 3+ Years Experience
+          </div>
+          <h1 class="hero-title" style="margin-top: 1rem;">
+            Real Growth for <br/>
+            <span class="text-gradient-blue">Scaling Brands.</span>
+          </h1>
+          <p class="hero-subtitle">
+            We engineer high-converting acquisition funnels, speed websites, Meta/Google ads, and WhatsApp automation for Real Estate, Doctors, CAs, Tourism & EdTech. Zero vanity metrics — only verified lead revenue.
+          </p>
+          <div class="hero-cta-group">
+            <button id="hero-primary-cta" class="btn btn-primary">
+              Calculate Your Growth (₹) →
+            </button>
+            <a href="#industries" class="btn btn-secondary">
+              Explore 10+ Domains
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <img src="/assets/hero.jpg" alt="Vanguard Digital Growth Engine" class="hero-visual-img" />
+          <div class="hero-live-badge">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary);">Client Ad Spend Scaled</div>
+              <div style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: var(--accent-emerald);">₹50 Lakhs+</div>
+            </div>
+            <div class="badge badge-amber">
+              Average 5.2x ROAS
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="container">
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-number" data-target="3">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="10">10+</div>
+            <div class="stat-label">Industry Verticals Mastered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="320">320%</div>
+            <div class="stat-label">Average Revenue Lift</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="35">35+</div>
+            <div class="stat-label">Brands Scaled</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Domain Explorer Section -->
+    <section id="industries" class="industry-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Multi-Domain Expertise</div>
+          <h2 class="section-title">Engineered for Your Industry</h2>
+          <p class="section-desc">
+            We don't use generic templates. Each industry domain gets bespoke acquisition funnels, local Google Maps pack SEO, and automated lead nurturing.
+          </p>
+        </div>
+
+        <!-- Industry Filter Tabs -->
+        <div id="industry-tabs" class="industry-nav">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Filtered Case Studies Grid -->
+        <div id="case-studies-grid" class="case-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Suite Section -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-emerald">End-To-End Growth Suite</div>
+          <h2 class="section-title">Specialized Marketing Services</h2>
+          <p class="section-desc">
+            From speed-optimized website development to Meta ads, Google PPC, SEO, and WhatsApp 24/7 lead booking automation.
+          </p>
+        </div>
+
+        <div id="services-grid" class="services-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Growth & ROI Calculator Section -->
+    <section id="roi-calculator" class="roi-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Data-Driven Forecasting</div>
+          <h2 class="section-title">Interactive Revenue Growth Calculator (INR ₹)</h2>
+          <p class="section-desc">
+            Adjust your monthly marketing budget in INR and industry domain to project estimated qualified leads and net revenue expansion.
+          </p>
+        </div>
+
+        <div class="roi-box">
+          <div class="calculator-controls">
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Select Industry Domain</span>
+              </div>
+              <select id="roi-industry-select" class="roi-select">
+                <option value="real-estate">Real Estate & Housing</option>
+                <option value="skincare-dermatology" selected>Skincare & Aesthetic Clinics</option>
+                <option value="hospitals-dental">Dental & Medical Clinics</option>
+                <option value="ayurveda-hospital">Ayurveda & Wellness Retreats</option>
+                <option value="interior-design">Interior Design & Architecture</option>
+                <option value="travel-tourism">Travel & Tourism</option>
+                <option value="car-rental">Car Rental & Fleet Services</option>
+                <option value="chartered-accountant">Chartered Accountants & Advisory</option>
+                <option value="educational-brands">Educational Institutions & EdTech</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Monthly Marketing Budget (INR ₹)</span>
+                <span id="budget-val-display" class="slider-val">₹30,000 / mo</span>
+              </div>
+              <input type="range" id="roi-budget-slider" min="15000" max="300000" step="5000" value="30000" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Target Average Customer / Patient Ticket Size (INR ₹)</span>
+                <span id="ticket-val-display" class="slider-val">₹15,000</span>
+              </div>
+              <input type="range" id="roi-ticket-slider" min="3000" max="150000" step="2000" value="15000" />
+            </div>
+          </div>
+
+          <div class="roi-display-card">
+            <div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Projected Monthly Net Revenue Lift</div>
+              <div class="projected-val-box">
+                <div id="projected-revenue-display" class="big-stat">₹1,72,800</div>
+                <div style="font-size: 0.88rem; color: var(--accent-emerald); font-weight: 600; margin-top: 0.25rem;">Estimated 5.76x Return on Ad Spend</div>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.5rem; color: var(--text-secondary);">
+                <span>Estimated High-Intent Leads:</span>
+                <strong id="projected-leads-display" style="color: var(--text-primary);">66 qualified leads / mo</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 1.25rem; color: var(--text-secondary);">
+                <span>WhatsApp Lead Automation:</span>
+                <strong style="color: var(--accent-emerald);">&lt; 90 Seconds</strong>
+              </div>
+              <button id="roi-claim-btn" class="btn btn-emerald" style="width: 100%;">
+                Claim This Growth Plan →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials & Proof Section -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Social Proof & Client Voice</div>
+          <h2 class="section-title">Trusted by Industry Leaders</h2>
+          <p class="section-desc">
+            Hear directly from business founders and clinic directors who scaled their growth with Vanguard Media.
+          </p>
+        </div>
+
+        <div id="testimonials-grid" class="testimonials-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation CTA Banner -->
+    <section class="container" style="margin-bottom: 6rem;">
+      <div style="background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%); border: 1px solid var(--border-active); border-radius: var(--radius-lg); padding: 4rem 2rem; text-align: center; box-shadow: var(--shadow-md);">
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Ready for Science-Backed Growth?</h2>
+        <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto 2rem; font-size: 1.05rem;">
+          Schedule a 30-minute growth audit with our senior strategists. We will analyze your current funnel and present a custom scaling roadmap.
+        </p>
+        <button id="cta-banner-btn" class="btn btn-primary" style="font-size: 1.05rem; padding: 1rem 2.25rem;">
+          Book Free Strategy Audit →
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo" style="margin-bottom: 1rem;">
+            <span class="logo-dot"></span>
+            VANGUARD<span class="text-gradient-blue">MEDIA</span>
+          </a>
+          <p class="footer-desc">
+            Bespoke digital growth agency engineering high-converting web applications, Meta ads, Google PPC, and automated revenue funnels for high-growth brands.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Industry Domains</h4>
+          <ul class="footer-links">
+            <li><a href="#industries" class="footer-link">Real Estate & Housing</a></li>
+            <li><a href="#industries" class="footer-link">Skincare & Clinics</a></li>
+            <li><a href="#industries" class="footer-link">Ayurveda Retreats</a></li>
+            <li><a href="#industries" class="footer-link">Dental & Medical Clinics</a></li>
+            <li><a href="#industries" class="footer-link">Chartered Accountants (CAs)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services" class="footer-link">Website Development & CRO</a></li>
+            <li><a href="#services" class="footer-link">WhatsApp Marketing Automation</a></li>
+            <li><a href="#services" class="footer-link">Meta & Instagram Performance Ads</a></li>
+            <li><a href="#services" class="footer-link">Google Ads PPC & Search</a></li>
+            <li><a href="#services" class="footer-link">Technical & Local Maps SEO</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact Agency</h4>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.75rem;">
+            ✉️ bibin247agent@gmail.com
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem;">
+            📞 +91 62389 61294
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Vanguard Media Digital Agency. All rights reserved. 3+ Years of Proven Scaling.</div>
+        <div>bibin247agent@gmail.com</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Consultation Lead Booking Modal -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modal-close-btn" class="modal-close">&times;</button>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <div class="badge">Direct Strategy Booking</div>
+        <h3 style="font-size: 1.75rem; font-weight: 800; margin-top: 0.5rem;">Claim Your Custom Growth Audit</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Fill in your details to receive an end-to-end breakdown of your current marketing bottleneck and projected revenue lift.</p>
+      </div>
+
+      <form id="lead-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="form-name">Your Full Name *</label>
+            <input type="text" id="form-name" class="form-input" placeholder="Enter your name..." required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Work Email *</label>
+            <input type="email" id="form-email" class="form-input" placeholder="email@brand.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-phone">Phone / WhatsApp Number *</label>
+            <input type="tel" id="form-phone" class="form-input" placeholder="+91 98765 43210" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-industry">Industry Domain *</label>
+            <select id="form-industry" class="form-select" required>
+              <option value="">Select Industry Domain...</option>
+              <option value="Real Estate">Real Estate & Housing</option>
+              <option value="Interior Design">Interior Design & Architecture</option>
+              <option value="Travel & Tourism">Travel & Tourism / Car Rental</option>
+              <option value="Ayurveda & Hospitals">Ayurveda & Medical Hospitals</option>
+              <option value="Dental & Skincare">Dental & Skincare Clinics</option>
+              <option value="Chartered Accountant">Chartered Accountant & Advisory</option>
+              <option value="Educational Brands">Educational Institutions / EdTech</option>
+              <option value="Other">Other High-Growth Domain</option>
+            </select>
+          </div>
+
+          <div class="form-group form-full">
+            <label class="form-label" for="form-service">Services Interested In</label>
+            <select id="form-service" class="form-select">
+              <option value="Full Omnichannel Growth Package">Full Omnichannel Growth Package (Recommended)</option>
+              <option value="Website Development & CRO">Website Development & CRO</option>
+              <option value="Performance Meta & Google Ads">Performance Meta & Google Ads</option>
+              <option value="SEO & Organic Dominance">SEO & Organic Dominance</option>
+              <option value="WhatsApp Marketing & Automation">WhatsApp Marketing & Automation</option>
+            </select>
+          </div>
+
+          <div class="form-group form-full">
+            <label class="form-label" for="form-notes">Monthly Budget & Current Goals (in ₹ INR)</label>
+            <textarea id="form-notes" class="form-textarea" rows="3" placeholder="Tell us about your current monthly revenue goals or ad budget (e.g. ₹20k - ₹75k / month)..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">
+          Submit Strategy Inquiry →
+        </button>
+      </form>
+    </div>
+  </footer>
+
+  <!-- Case Study Detailed Modal -->
+  <div id="case-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 720px;">
+      <button id="case-modal-close" class="modal-close">&times;</button>
+      <div id="case-modal-content">
+        <!-- Dynamic content filled via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
