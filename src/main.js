@@ -304,7 +304,7 @@ function initTestimonials() {
   `).join('');
 }
 
-/* 7. Guaranteed Email Dispatch & Form Handling */
+/* 7. Web3Forms Silent Email Integration with User Key */
 function initModals() {
   const contactModal = document.getElementById('contact-modal');
   const caseModal = document.getElementById('case-modal');
@@ -333,7 +333,7 @@ function initModals() {
 
     const submitBtn = leadForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending Inquiry...';
+    submitBtn.textContent = 'Sending Strategy Inquiry...';
     submitBtn.disabled = true;
 
     const name = document.getElementById('form-name').value;
@@ -343,51 +343,59 @@ function initModals() {
     const service = document.getElementById('form-service').value;
     const notes = document.getElementById('form-notes').value;
 
-    const targetEmail = "bibin247agent@gmail.com";
-    const subject = `New Strategy Inquiry: ${name} (${industry})`;
-    const emailBody = `New Agency Lead Inquiry:\n--------------------------------\nName: ${name}\nEmail: ${email}\nPhone/WhatsApp: ${phone}\nIndustry Domain: ${industry}\nService Required: ${service}\n\nBudget & Goals:\n${notes}`;
-
-    let sentViaApi = false;
+    const accessKey = "ba69ff63-8620-4d00-85b7-82a34e21a85e"; // Configured Web3Forms Key for bibin247agent@gmail.com
 
     try {
-      // 1. Web3Forms Free API Dispatch
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: '5561a00a-096b-4e96-a837-1234567890ab', // Web3Forms endpoint
+          access_key: accessKey,
           name: name,
           email: email,
           phone: phone,
           industry: industry,
           service: service,
           message: notes,
-          subject: subject,
-          replyto: email
+          subject: `⚡ New Agency Lead Inquiry: ${name} (${industry})`,
+          from_name: "Vanguard Growth Portfolio"
         })
       });
 
-      const data = await response.json();
-      if (data.success) {
-        sentViaApi = true;
+      const result = await response.json();
+
+      if (result.success) {
+        showToast('Inquiry Received! Confirmation sent directly to bibin247agent@gmail.com');
+      } else {
+        // Fallback to mailto if key has not been activated via confirmation email
+        triggerMailto(name, email, phone, industry, service, notes);
+        showToast('Inquiry Prepared! Opening email client for bibin247agent@gmail.com');
       }
     } catch (err) {
-      console.log('Web3Forms API notice, activating instant mailto fallback.');
+      triggerMailto(name, email, phone, industry, service, notes);
+      showToast('Opening email client for bibin247agent@gmail.com');
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      contactModal?.classList.remove('active');
+      leadForm.reset();
     }
-
-    // 2. Instant mailto trigger guarantee
-    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoUrl;
-
-    showToast(`Inquiry Prepared! Opening email client to send directly to ${targetEmail}`);
-
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-    contactModal?.classList.remove('active');
-    leadForm.reset();
   });
 
   attachModalTriggers();
+}
+
+function triggerMailto(name, email, phone, industry, service, notes) {
+  const subject = encodeURIComponent(`New Strategy Inquiry: ${name} (${industry})`);
+  const body = encodeURIComponent(
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Phone/WhatsApp: ${phone}\n` +
+    `Industry Domain: ${industry}\n` +
+    `Service Required: ${service}\n\n` +
+    `Budget & Goals:\n${notes}`
+  );
+  window.location.href = `mailto:bibin247agent@gmail.com?subject=${subject}&body=${body}`;
 }
 
 function openContactModal() {
