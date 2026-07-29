@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%" fill="none">
+  <rect width="600" height="350" fill="#F8FAFC"/>
+  <rect x="20" y="20" width="560" height="310" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  
+  <!-- Architectural Blueprint Grid lines -->
+  <line x1="60" y1="40" x2="60" y2="310" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="310" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="180" y1="40" x2="180" y2="310" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="240" y1="40" x2="240" y2="310" stroke="#F1F5F9" stroke-width="1"/>
+  
+  <!-- Modern Architectural Structure -->
+  <rect x="80" y="100" width="180" height="190" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2" rx="4"/>
+  <rect x="280" y="60" width="220" height="230" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5" rx="6"/>
+  
+  <!-- Windows -->
+  <rect x="310" y="90" width="45" height="35" rx="3" fill="#DBEAFE"/>
+  <rect x="375" y="90" width="45" height="35" rx="3" fill="#DBEAFE"/>
+  <rect x="440" y="90" width="45" height="35" rx="3" fill="#DBEAFE"/>
+
+  <rect x="310" y="145" width="45" height="35" rx="3" fill="#DBEAFE"/>
+  <rect x="375" y="145" width="45" height="35" rx="3" fill="#2563EB"/>
+  <rect x="440" y="145" width="45" height="35" rx="3" fill="#DBEAFE"/>
+
+  <!-- Analytics Badge Overlay -->
+  <rect x="110" y="180" width="240" height="70" rx="10" fill="#FFFFFF" stroke="#059669" stroke-width="2"/>
+  <text x="130" y="210" font-family="-apple-system, sans-serif" font-size="12" fill="#047857" font-weight="700">REAL ESTATE BUYER INQUIRIES</text>
+  <text x="130" y="235" font-family="-apple-system, sans-serif" font-size="18" fill="#0F172A" font-weight="800">₹45 Lakhs Pipeline</text>
+</svg>

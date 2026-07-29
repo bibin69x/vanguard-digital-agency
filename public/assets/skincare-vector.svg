@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%" fill="none">
+  <rect width="600" height="350" fill="#FDF4FF"/>
+  <rect x="20" y="20" width="560" height="310" rx="12" fill="#FFFFFF" stroke="#F5D0FE" stroke-width="1.5"/>
+  
+  <!-- Minimalist Aesthetic Circles & Sparkles -->
+  <circle cx="300" cy="175" r="110" stroke="#C084FC" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="300" cy="175" r="85" fill="#FAE8FF" opacity="0.6"/>
+  <circle cx="300" cy="175" r="60" fill="#F0ABFC" opacity="0.4"/>
+  
+  <!-- Aesthetic Sparkle Icon Shapes -->
+  <path d="M300 135 L305 165 L335 170 L305 175 L300 205 L295 175 L265 170 L295 165 Z" fill="#9333EA"/>
+  <path d="M420 90 L423 105 L438 108 L423 111 L420 126 L417 111 L402 108 L417 105 Z" fill="#C084FC"/>
+  <path d="M180 220 L183 235 L198 238 L183 241 L180 256 L177 241 L162 238 L177 235 Z" fill="#C084FC"/>
+
+  <!-- Metric Overlay -->
+  <rect x="180" y="240" width="240" height="65" rx="10" fill="#FFFFFF" stroke="#9333EA" stroke-width="2"/>
+  <text x="200" y="267" font-family="-apple-system, sans-serif" font-size="12" fill="#7E22CE" font-weight="700">CLINIC PATIENT APPOINTMENTS</text>
+  <text x="200" y="292" font-family="-apple-system, sans-serif" font-size="18" fill="#0F172A" font-weight="800">+380% Bookings Lift</text>
+</svg>
