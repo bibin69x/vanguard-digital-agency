@@ -217,7 +217,7 @@ function initServicesMatrix() {
   `).join('');
 }
 
-/* 5. Interactive ROI & Growth Calculator in INR (₹) */
+/* 5. Interactive ROI & Growth Calculator in INR (₹) - Mathematically Sound Model */
 function initRoiCalculator() {
   const budgetSlider = document.getElementById('roi-budget-slider');
   const ticketSlider = document.getElementById('roi-ticket-slider');
@@ -231,20 +231,23 @@ function initRoiCalculator() {
 
   if (!budgetSlider || !ticketSlider || !projectedRevDisplay) return;
 
+  // Domain specific unit economics: Cost per Qualified Lead (CPL) and closing conversion rate (CR)
   const domainBench = {
-    'real-estate': { cpl: 450, roas: 5.8 },
-    'skincare-dermatology': { cpl: 350, roas: 5.76 },
-    'hospitals-dental': { cpl: 380, roas: 6.5 },
-    'ayurveda-hospital': { cpl: 360, roas: 5.5 },
-    'interior-design': { cpl: 550, roas: 5.2 },
-    'travel-tourism': { cpl: 280, roas: 5.6 },
-    'car-rental': { cpl: 250, roas: 5.4 },
-    'chartered-accountant': { cpl: 650, roas: 4.8 },
-    'educational-brands': { cpl: 320, roas: 6.0 }
+    'real-estate': { cpl: 450, closingRate: 0.06 },
+    'skincare-dermatology': { cpl: 350, closingRate: 0.12 },
+    'hospitals-dental': { cpl: 380, closingRate: 0.10 },
+    'ayurveda-hospital': { cpl: 360, closingRate: 0.08 },
+    'interior-design': { cpl: 550, closingRate: 0.07 },
+    'travel-tourism': { cpl: 280, closingRate: 0.09 },
+    'car-rental': { cpl: 250, closingRate: 0.15 },
+    'chartered-accountant': { cpl: 650, closingRate: 0.08 },
+    'educational-brands': { cpl: 320, closingRate: 0.11 }
   };
 
   function formatINR(amount) {
-    if (amount >= 100000) {
+    if (amount >= 10000000) {
+      return `₹${(amount / 10000000).toFixed(2)} Cr`;
+    } else if (amount >= 100000) {
       return `₹${(amount / 100000).toFixed(2)} Lakhs`;
     }
     return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(amount);
@@ -254,18 +257,31 @@ function initRoiCalculator() {
     const budget = parseFloat(budgetSlider.value);
     const ticket = parseFloat(ticketSlider.value);
     const domainKey = industrySelect.value;
-    const bench = domainBench[domainKey] || { cpl: 350, roas: 5.5 };
+    const bench = domainBench[domainKey] || { cpl: 350, closingRate: 0.09 };
 
     budgetDisplay.textContent = `${formatINR(budget)} / mo`;
     ticketDisplay.textContent = formatINR(ticket);
 
+    // 1. Leads generated from budget
     const estimatedLeads = Math.round(budget / bench.cpl);
-    const conversionRate = 0.08;
-    const acquiredClients = Math.max(1, Math.round(estimatedLeads * conversionRate));
-    const projectedGrossRev = budget * bench.roas;
+
+    // 2. Converted clients/sales based on industry closing rate
+    const convertedClients = Math.max(1, Math.round(estimatedLeads * bench.closingRate));
+
+    // 3. Projected Gross Revenue = Converted Clients * Ticket Size
+    const projectedGrossRev = convertedClients * ticket;
+
+    // 4. Calculated ROAS = Projected Gross Revenue / Ad Budget
+    const calculatedRoas = (projectedGrossRev / budget).toFixed(1);
+
+    // Dynamic color indicator based on ROAS strength
+    const roasSubtext = document.querySelector('.projected-val-box div:last-child');
+    if (roasSubtext) {
+      roasSubtext.textContent = `Estimated ${calculatedRoas}x Return on Ad Spend (ROAS)`;
+    }
 
     projectedRevDisplay.textContent = formatINR(projectedGrossRev);
-    projectedLeadsDisplay.textContent = `${estimatedLeads} qualified leads / mo (${acquiredClients} estimated sales)`;
+    projectedLeadsDisplay.textContent = `${estimatedLeads} qualified leads / mo (${convertedClients} estimated sales)`;
   }
 
   budgetSlider.addEventListener('input', calculateROI);
@@ -343,7 +359,7 @@ function initModals() {
     const service = document.getElementById('form-service').value;
     const notes = document.getElementById('form-notes').value;
 
-    const accessKey = "ba69ff63-8620-4d00-85b7-82a34e21a85e"; // Configured Web3Forms Key for bibin247agent@gmail.com
+    const accessKey = "ba69ff63-8620-4d00-85b7-82a34e21a85e";
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -367,7 +383,6 @@ function initModals() {
       if (result.success) {
         showToast('Inquiry Received! Confirmation sent directly to bibin247agent@gmail.com');
       } else {
-        // Fallback to mailto if key has not been activated via confirmation email
         triggerMailto(name, email, phone, industry, service, notes);
         showToast('Inquiry Prepared! Opening email client for bibin247agent@gmail.com');
       }
